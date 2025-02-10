@@ -1,0 +1,9 @@
+.cart-div{
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+    align-items: center
+}
+.cart-div img{
+    width: 20px
+}

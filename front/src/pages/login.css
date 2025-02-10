@@ -1,0 +1,50 @@
+.login input {
+    display: block;
+    width: 200px;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    justify-content: center;
+    gap: 10px;
+    
+    text-transform: capitalize;
+}
+.login .button {
+    width:  300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.login .button button {
+    width: 200px;
+    border:0;
+    background-color: red;
+
+}
+.span {
+    position: relative;
+}
+.span span{
+    position: absolute;
+    top: 25px;
+    right: 10px;
+}
+/* sign*/
+.profile label img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.profile {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+ .profile label input {
+    display: none;
+}

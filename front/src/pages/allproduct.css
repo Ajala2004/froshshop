@@ -1,0 +1,26 @@
+.allproduct .each-product{
+    background-color: black;
+    gap: 10px;
+    padding: 10px;
+    height: 300px;
+    color :white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.allproduct .each-product img {
+    width: 200px
+}
+.allproduct .div-each-product{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap:20px;
+   
+    overflow: hidden;
+}
+.allproduct {
+    overflow-x: hidden;
+    width: 100vw;
+    
+}

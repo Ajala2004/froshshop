@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+}
+.body {
+    background-color: rgb(246, 248, 250);
+   
+}
+.women {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.kid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
