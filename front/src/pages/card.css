@@ -1,0 +1,182 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+/* Card Container */
+.card-ori {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Individual Product Card */
+.cont {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.cont:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Product Image */
+.img {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.cont:hover .img img {
+    transform: scale(1.1);
+}
+
+/* Product Details */
+.write-up {
+    padding: 15px;
+    text-align: center;
+}
+
+.write-up p {
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.write-up small {
+    display: block;
+    font-size: 14px;
+    color: #777;
+}
+
+/* Price Section */
+.write-up div {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.write-up div small {
+    font-size: 14px;
+    color: #555;
+}
+
+.write-up div small:first-child {
+    color: #28a745; /* Green for original price */
+}
+
+.write-up div small:last-child {
+    text-decoration: line-through;
+    color: #dc3545; /* Red for discounted price */
+}
+
+/* Read More Link */
+.write-up a {
+    display: inline-block;
+    margin: 10px 0;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.write-up a:hover {
+    color: #0056b3;
+}
+
+/* Add to Cart Button */
+.add {
+    margin-top: 15px;
+}
+
+.btn-add {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn-add:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card-ori {
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .cont {
+        width: 45%; /* Two cards per row on smaller screens */
+    }
+
+    .img {
+        height: 150px;
+    }
+
+    .write-up p {
+        font-size: 14px;
+    }
+
+    .write-up small {
+        font-size: 12px;
+    }
+
+    .btn-add {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cont {
+        width: 100%; /* One card per row on mobile */
+    }
+
+    .img {
+        height: 180px;
+    }
+
+    .write-up p {
+        font-size: 16px;
+    }
+
+    .write-up small {
+        font-size: 14px;
+    }
+
+    .btn-add {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
