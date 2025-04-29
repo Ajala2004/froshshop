@@ -1,50 +1,184 @@
-.login input {
-    display: block;
-    width: 200px;
-}
-
-.login {
+/* Admin Login Styles */
+.admin-login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+    padding: 2rem;
+  }
+  
+  .login-card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+    padding: 2.5rem;
+    overflow: hidden;
+  }
+  
+  .login-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  
+  .logo-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
-    justify-content: center;
-    gap: 10px;
-    
-    text-transform: capitalize;
-}
-.login .button {
-    width:  300px;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .admin-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #64ffda;
+    color: #0a192f;
     display: flex;
-    justify-content: center;
     align-items: center;
-    
-}
-.login .button button {
-    width: 200px;
-    border:0;
-    background-color: red;
-
-}
-.span {
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+  
+  .login-header h2 {
+    font-size: 1.8rem;
+    color: #0a192f;
+    margin: 0;
+  }
+  
+  .login-header p {
+    color: #666;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .error-message {
+    background: #ffecec;
+    color: #ff4d4d;
+    padding: 0.8rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    border-left: 4px solid #ff4d4d;
+    margin-bottom: 0.5rem;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .input-group label {
+    font-size: 0.9rem;
+    color: #444;
+    font-weight: 500;
+  }
+  
+  .input-wrapper {
     position: relative;
-}
-.span span{
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-icon {
     position: absolute;
-    top: 25px;
-    right: 10px;
-}
-/* sign*/
-.profile label img {
-    width: 50px;
-    height: 50px;
+    left: 1rem;
+    color: #666;
+    font-size: 1rem;
+  }
+  
+  .input-wrapper input {
+    width: 100%;
+    padding: 0.9rem 1rem 0.9rem 2.5rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+  }
+  
+  .input-wrapper input:focus {
+    border-color: #64ffda;
+    box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.2);
+    outline: none;
+  }
+  
+  .login-button {
+    background: #64ffda;
+    color: #0a192f;
+    border: none;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+    margin-top: 1rem;
+  }
+  
+  .login-button:hover {
+    background: #52e8c9;
+  }
+  
+  .login-button:disabled {
+    background: #b3f0e4;
+    cursor: not-allowed;
+  }
+  
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(10, 25, 47, 0.2);
+    border-top-color: #0a192f;
     border-radius: 50%;
-}
-.profile {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
- .profile label input {
-    display: none;
-}
+    animation: spin 0.8s linear infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .security-notice {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+    color: #666;
+    font-size: 0.8rem;
+  }
+  
+  .security-notice .lock-icon {
+    color: #64ffda;
+    font-size: 0.9rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 480px) {
+    .login-card {
+      padding: 1.5rem;
+    }
+  
+    .admin-icon {
+      width: 50px;
+      height: 50px;
+      font-size: 1.2rem;
+    }
+  
+    .login-header h2 {
+      font-size: 1.5rem;
+    }
+  }

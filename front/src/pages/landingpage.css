@@ -1,0 +1,220 @@
+/* Base Styles */
+.landing-page {
+  font-family: 'Inter', sans-serif;
+  color: #0a192f;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+  background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+  color: white;
+  position: relative;
+}
+
+.hero-content {
+  padding: 2rem;
+  padding-top: 6rem;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  background: linear-gradient(to right, #64ffda, #ccd6f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #ccd6f6;
+  max-width: 600px;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #64ffda;
+  color: #0a192f;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(100, 255, 218, 0.3);
+}
+
+.hero-image {
+  height: 300px;
+  width: 100%;
+  background: url('/images/hero-car-mobile.jpg') center/cover no-repeat;
+  margin-top: 2rem;
+}
+
+/* Features Section */
+.features-section {
+  padding: 4rem 2rem;
+  background: #f8f9fa;
+  text-align: center;
+}
+
+.features-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #0a192f;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  padding: 2rem;
+  border-radius: 1rem;
+  background: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.feature-icon {
+  color: #64ffda;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Cars Section */
+.cars-section {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: white;
+}
+
+.cars-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #0a192f;
+}
+
+.cars-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.car-card {
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.car-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.car-info {
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.car-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.car-info p {
+  font-size: 1.1rem;
+  color: #64ffda;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.view-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #0a192f;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.view-button:hover {
+  color: #64ffda;
+}
+
+/* Desktop Styles */
+@media (min-width: 768px) {
+  .hero-section {
+    flex-direction: row;
+    min-height: 80vh;
+  }
+
+  .hero-content {
+    padding: 5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-content h1 {
+    font-size: 3.5rem;
+  }
+
+  .hero-image {
+    flex: 1;
+    height: auto;
+    margin-top: 0;
+    background: url('/images/hero-car.jpg') center/cover no-repeat;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cars-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .hero-content {
+    padding: 5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 4rem;
+  }
+}

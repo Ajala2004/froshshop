@@ -1,82 +1,147 @@
-import { FaSearch } from "react-icons/fa";
-import { FaEye } from "react-icons/fa";
-import { FaCartShopping, FaCircleUser, FaEyeLowVision } from "react-icons/fa6";
-import { IoMdCart } from "react-icons/io";
-import React, { useContext, useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
-import Context from '../context';
+import { motion, AnimatePresence } from 'framer-motion';
 import './nav.css';
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
-import ROLE from '../component/role';
-import { toast } from 'react-toastify';
-import { setUserdetails } from '../store/slice';
+import { FaCar, FaSearch, FaUser, FaChevronDown } from 'react-icons/fa';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { MdClose } from 'react-icons/md';
+import Loader from './loader';
 
-function Nav() {
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const { fetchuserDetails } = useContext(Context);
-  const dispatch = useDispatch();
-  const [adminpop, setAdminpop] = useState(false);
-  const user = useSelector(state => state?.user?.user);
 
-  const handleLogout = async () => {
-    try {
-      const fetchData = await axios.get("/api/logout");
-      if (fetchData) {
-        toast.success("Logged out successfully");
-        dispatch(setUserdetails(null));
-        navigate("/");
-      }
-    } catch (error) {
-      toast.error(error.response?.data?.message || "Logout failed");
-    }
+  const carBrands = ["Toyota", "Honda", "BMW", "Mercedes", "Audi", "Tesla"];
+
+  const handleBrandSelect = (brand) => {
+    setIsLoading(true);
+    setTimeout(() => {
+      navigate(`/brands/${brand}`);
+      setIsLoading(false);
+      setIsMenuOpen(false);
+    }, 800);
   };
 
   return (
-    <div className='navbar'>
-      <div className="navbar-brand">
-        <Link to={"/"}>
-          <img src="/public/online-shopping.png" alt="Logo" className="logo" />
-        </Link>
-      </div>
-      <div className='search-bar'>
-        <input type="text" placeholder="Search products..." />
-        <button className="search-button">
-          <FaSearch className="search-icon" />
-        </button>
-      </div>
-      <div className="navbar-right">
-        {user?._id ? (
-          <>
-            <div className="user-profile" onClick={() => setAdminpop(!adminpop)}>
-              {user?.profilepic ? (
-                <img src={user?.profilepic} alt="Profile" className="profile-pic" />
-              ) : (
-                <FaCircleUser className="profile-icon" />
-              )}
-              {adminpop && (
-                <div className="admin-popup">
-                  {user?.role === ROLE.ADMIN && (
-                    <Link to={'/adminpanel'}>Admin Panel</Link>
-                  )}
-                </div>
-              )}
-            </div>
-            <Link to={"/cart"} className="cart-link">
-              <FaCartShopping className="cart-icon" />
-              <span className="cart-count">0</span>
-            </Link>
-            <button className="logout-button" onClick={handleLogout}>Logout</button>
-          </>
-        ) : (
-          <Link to={"/login"}>
-            <button className="login-button">Login</button>
-          </Link>
-        )}
-      </div>
-    </div>
-  );
-}
+    <>
+      {isLoading && <Loader />}
 
-export default Nav;
+      <nav className="navbar">
+        {/* Left: Logo */}
+        <motion.div
+          className="logo-container"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <FaCar className="logo-icon" />
+          <span className="logo-text">FROSHAUTO</span>
+        </motion.div>
+
+        {/* Center: Navigation */}
+        <div className="nav-links">
+          <motion.div
+            className="nav-item"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link to="/">Home</Link>
+          </motion.div>
+
+          <motion.div
+            className="nav-item brands-dropdown"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span>Brands <FaChevronDown className="dropdown-icon" /></span>
+
+            <motion.div
+              className="dropdown-menu"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              {carBrands.map((brand) => (
+                <motion.div
+                  key={brand}
+                  className="dropdown-item"
+                  whileHover={{ x: 5 }}
+                  onClick={() => handleBrandSelect(brand)}
+                >
+                  {brand}
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            className="nav-item"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link to="/about">About</Link>
+          </motion.div>
+        </div>
+
+        {/* Right: Search/User */}
+        <div className="nav-actions">
+          <motion.div
+            className="search-container"
+            whileHover={{ scale: 1.05 }}
+          >
+            <FaSearch className="search-icon" />
+            <input type="text" placeholder="Search..." />
+          </motion.div>
+
+          <motion.button
+            className="user-btn"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link to={"/login"}>
+            <FaUser />
+            </Link>
+          </motion.button>
+        </div>
+
+        {/* Mobile Menu Toggle */}
+        <motion.div
+          className="mobile-toggle"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          whileTap={{ scale: 0.9 }}
+        >
+          {isMenuOpen ? <MdClose size={24} /> : <GiHamburgerMenu size={24} />}
+        </motion.div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              className="mobile-menu"
+              initial={{ opacity: 0, x: 300 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 300 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            >
+              {carBrands.map((brand) => (
+                <motion.div
+                  key={brand}
+                  className="mobile-item"
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => handleBrandSelect(brand)}
+                >
+                  {brand}
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
+    </>
+  );
+};
+
+export default Navbar;
